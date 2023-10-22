@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Use the instance metadata service to fetch EC2 instance metadata
+EC2_metadata_url="http://13.234.29.237/latest/meta-data/"
+
+# Fetch all available metadata keys
+EC2_metadata_keys=$(curl -s $EC2_metadata_url)
+
+# Initialize an empty JSON object
+json_output="{"
+
+# Loop through metadata keys and fetch their values
+for key in $metadata_keys; do
+    value=$(curl -s "${EC2_metadata_url}${key}")
+    # Now we need to add the key-value pair to the JSON object
+    json_output="${json_output}\"$key\":\"$value\","
+done
+
+# Remove the trailing comma and close the JSON object
+json_output="${json_output%,}"
+json_output="${json_output}}"
+
+# Print the JSON output
+echo $json_output
+
+
