@@ -1,0 +1,31 @@
+#!/bin/bash
+
+set -x #for debugging
+
+# Define the function to extract a value from a nested object using a key path
+# Arguments:
+# $1 - The JSON like format input
+# $2 - The key
+
+function get_nested_value {
+    local object="$1"
+    local key="$2"
+    
+    # We will split the key path into an array
+    IFS='/' read -ra keys <<< "$key"
+
+    # Initialize a variable to traverse the object
+    local current="$object"
+
+    # Iterate through the keys
+    for k in "${keys[@]}"; do
+        current="${current[$k]}"
+    done
+
+    # Print the final value
+    echo "$current"
+}
+
+#We will define the value  where we will use the user cases given
+value=$(get_nested_value "$object" "$key")
+echo "Value: $value"
