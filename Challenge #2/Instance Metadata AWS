@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x #to enable the debugging
+
 # Use the instance metadata service to fetch EC2 instance metadata
 EC2_metadata_url="http://13.234.29.237/latest/meta-data/"
 
