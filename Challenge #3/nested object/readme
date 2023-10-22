@@ -1,1 +1,12 @@
+This script defines a get_nested_value function that takes the object and key path as arguments and returns the corresponding value. 
+It splits the key path into an array, and then iterates through the keys to access the value in the nested object.
 
+You can use this function to extract values from nested objects by passing the object and key as arguments
+
+# Example usage:
+object='{"a":{"b":{"c":"d"}}}'
+key="a/b/c"
+value=$(get_nested_value "$object" "$key")
+echo "Value : $value"
+
+this will give value: a
