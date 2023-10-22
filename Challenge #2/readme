@@ -1,0 +1,11 @@
+This script does the following:
+
+Sets the metadata URL for the EC2 instance metadata service.
+Uses curl to fetch the list of available metadata keys.
+Initializes an empty JSON object.
+Iterates through the metadata keys while fetching their values and adding them to the JSON object.
+Removes the trailing comma and closes the JSON objects.
+Prints the JSON output to the console.
+We need to run it in AWS CLI providing all the region,access key,secret key
+We will save this script to a file, make it executable EC2__metadata.sh, and run it on your EC2 instance. 
+It will fetch the instance metadata and provide a JSON-formatted output.
